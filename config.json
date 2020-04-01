@@ -1,0 +1,6 @@
+{
+  "DirectoryConfig": {
+    "input": "TestData/MaterialReport",
+    "output": "TestData/Result"
+  }
+}
