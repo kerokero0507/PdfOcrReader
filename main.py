@@ -27,11 +27,7 @@ for row in config:
     result_list.append(Reader.read(cut_image))
     header.append(row[0])
 
-print(result_list)
-
 output = [header, result_list]
-
-print(output)
 
 targets = FolderControl.folders(input_path, True)
 for f in targets:
