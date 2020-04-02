@@ -8,6 +8,7 @@
     - PIL(pillow 7.0.0)
     - tesseract 4.1.1
     - pytesseract 0.3.3
+    - watchdog 0.10.2
 
 ## 機能
 - 決められたフォルダにPDFファイルを置くと、その中身をOCRで読み取り出力する。
