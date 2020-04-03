@@ -6,7 +6,6 @@ def folders(targetpath, name_only=False):
     for folder, subfolders, files in os.walk(targetpath):
         for subfolder in subfolders:
             if not name_only:
-                print(folder + '/' + subfolder)
                 dir_list.append(folder + '/' + subfolder)
             else:
                 dir_list.append(subfolder)
