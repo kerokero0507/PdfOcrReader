@@ -2,13 +2,12 @@ from pdf2image import convert_from_path
 from PIL import Image
 
 
-def to_jpeg(pdf_path):
+def to_image(pdf_path):
     return convert_from_path(pdf_path)
 
 
-def cutting_out(image_path, left, upper, right, lower):
-    images = convert_from_path(image_path)
-    return images[0].crop((int(left), int(upper), int(right), int(lower)))
+def cutting_out(image, left, upper, right, lower):
+    return image.crop((int(left), int(upper), int(right), int(lower)))
 
 
 if __name__ == '__main__':
