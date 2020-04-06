@@ -47,7 +47,8 @@ def run(filename):
 
     next(config)
     for row in config:
-        cut_image = Converter.cutting_out(files[0], row[1], row[2], row[3], row[4])
+        image_page = Converter.to_image(files[0])[int(row[5])]
+        cut_image = Converter.cutting_out(image_page, row[1], row[2], row[3], row[4])
         # cut_image.show()
         result_list.append(Reader.read(cut_image))
         header.append(row[0])
