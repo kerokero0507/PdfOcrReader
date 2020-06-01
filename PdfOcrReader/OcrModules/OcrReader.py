@@ -7,5 +7,5 @@ def read(image):
 
 
 if __name__ == '__main__':
-    FILENAME = './test_cutimage.png'
+    FILENAME = 'test_cutimage.png'
     print(pytesseract.image_to_string(Image.open(FILENAME),config='--psm 6'))

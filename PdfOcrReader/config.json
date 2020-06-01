@@ -1,6 +1,7 @@
 {
   "DirectoryConfig": {
     "input": "TestData/MaterialReport",
-    "output": "TestData/Result"
+    "output": "TestData/Result",
+    "PassWord": "RICOHG"
   }
 }

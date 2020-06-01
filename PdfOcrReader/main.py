@@ -1,8 +1,7 @@
-import OcrModules.OcrReader as Reader
-import PdfToImage.ImageConverter as Converter
+from PdfOcrReader import OcrModules as Reader, FolderControl
+import PdfOcrReader.PdfToImage.ImageConverter as Converter
 import csv
 import json
-import FolderControl
 import os
 import time
 from watchdog.events import FileSystemEventHandler
@@ -33,6 +32,7 @@ def run(filename):
     json_load = json.load(open('config.json', 'r'))
     input_path = json_load['DirectoryConfig']['input']
     output_path = json_load['DirectoryConfig']['output']
+    password = json_load['DirectoryConfig']['PassWord']
 
     targets = FolderControl.folders(input_path)
     mapping = FolderControl.sort_files(targets[0], '.csv')[0]
