@@ -1,5 +1,7 @@
-from PdfOcrReader import OcrModules as Reader, FolderControl
-import PdfOcrReader.PdfToImage.ImageConverter as Converter
+import pdf2image
+
+import OcrModules.OcrReader as Reader, FolderControl
+import PdfToImage.ImageConverter as Converter
 import csv
 import json
 import os
@@ -35,7 +37,15 @@ def run(filename):
     password = json_load['DirectoryConfig']['PassWord']
 
     targets = FolderControl.folders(input_path)
-    mapping = FolderControl.sort_files(targets[0], '.csv')[0]
+    i = 0
+    index = 0
+    for f in targets:
+        if f == os.path.dirname(filename):
+            index = i
+            break
+        i = i + 1
+
+    mapping = FolderControl.sort_files(targets[index], '.csv')[0]
 
     files = [filename]
 
@@ -47,7 +57,11 @@ def run(filename):
 
     next(config)
     for row in config:
-        image_page = Converter.to_image(files[0])[int(row[5])]
+        try:
+            image_page = Converter.to_image(files[0])[int(row[5])]
+        except pdf2image.exceptions.PDFPageCountError:
+            image_page = Converter.to_image_unlock(files[0], password)[int(row[5])]
+
         cut_image = Converter.cutting_out(image_page, row[1], row[2], row[3], row[4])
         # cut_image.show()
         result_list.append(Reader.read(cut_image))
@@ -61,7 +75,7 @@ def run(filename):
 
     name = os.path.splitext(os.path.basename(files[0]))[0]
 
-    out_file = open(output_path + '/' + targets[0] + '/' + name + '.csv', 'w')
+    out_file = open(output_path + '/' + targets[index] + '/' + name + '.csv', 'w')
     writer = csv.writer(out_file)
     writer.writerows(output)
 
