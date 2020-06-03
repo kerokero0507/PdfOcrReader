@@ -9,7 +9,7 @@ RUN pip3 install pdf2image
 RUN pip3 install pytesseract
 RUN pip3 install watchdog
 
-RUN apt-get install wget
+RUN apt-get install -y wget
 RUN wget https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py
 RUN pip install pikepdf
 
