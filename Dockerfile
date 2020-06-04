@@ -1,15 +1,14 @@
 FROM ubuntu:18.04
 
-RUN apt-get update
-RUN apt-get install -y \
-    tesseract-ocr
-RUN apt-get install -y poppler-utils
-RUN apt-get install -y python3 python3-pip
+RUN apt-get update && apt-get install -y \
+    tesseract-ocr \
+    poppler-utils \
+    python3 python3-pip \
+    wget 
+
 RUN pip3 install pdf2image
 RUN pip3 install pytesseract
 RUN pip3 install watchdog
-
-RUN apt-get install -y wget
 RUN wget https://bootstrap.pypa.io/get-pip.py && python3 get-pip.py
 RUN pip install pikepdf
 
