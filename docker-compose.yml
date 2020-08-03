@@ -1,0 +1,10 @@
+
+
+version: '3'
+services:
+    ubuntu:
+        build: .
+        container_name: 'OcrServer'
+        tty: true
+        volumes:
+            - ./PdfOcrReader:/usr/local/PdfOcrReader
