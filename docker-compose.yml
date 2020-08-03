@@ -4,8 +4,7 @@ version: '3'
 services:
     ubuntu:
         build: .
-        container_name: 'ubuntu20.04'
-        working_dir: '/root/'
+        container_name: 'OcrServer'
         tty: true
         volumes:
-            - ./PdfOcrReader:/root/PdfOcrReader
+            - ./PdfOcrReader:/usr/local/PdfOcrReader
